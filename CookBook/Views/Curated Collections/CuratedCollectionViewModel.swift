@@ -15,11 +15,10 @@ protocol CuratedCollectionViewModelDelegate: AnyObject {
     func finishLoadingWithError(_ error: Error)
 }
 
-struct CuratedCollectionViewModel {
+class CuratedCollectionViewModel {
     let service: CuratedCollectionService!
     weak var delegate: CuratedCollectionViewModelDelegate?
 
-    var cancellables: Set<AnyCancellable> = []
     var dataSource: DataSource!
     var snapshot = Snapshot()
 
@@ -29,6 +28,23 @@ struct CuratedCollectionViewModel {
     }
 
     func loadCollections() {
-        
+        service.load { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let collection):
+                self.updateCollection(collection)
+                break
+            case .failure(let error):
+                self.delegate?.finishLoadingWithError(error)
+                break
+            }
+        }
+    }
+
+    func updateCollection(_ collection: [CuratedCollection]) {
+        snapshot.deleteAllItems()
+        snapshot.appendItems(collection)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }

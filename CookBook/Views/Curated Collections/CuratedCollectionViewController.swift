@@ -14,7 +14,6 @@ typealias Snapshot = NSDiffableDataSourceSnapshot<String?, CuratedCollection>
 class CuratedCollectionViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
-    var cancellables: Set<AnyCancellable> = []
     var viewModelService: CuratedCollectionService!
     var viewModel: CuratedCollectionViewModel!
 
@@ -36,7 +35,11 @@ class CuratedCollectionViewController: UIViewController {
     }
 
     func bindViewModel() {
-
+        viewModel.dataSource = UICollectionViewDiffableDataSource(collectionView: mainCollectionView, cellProvider: { (collectionView, indexPath, model) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratedCollectionCollectionViewCell", for: indexPath) as! CuratedCollectionCollectionViewCell
+            cell.updateCell(with: model)
+            return cell
+        })
     }
 }
 
