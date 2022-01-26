@@ -21,4 +21,12 @@ public struct CuratedCollection: Hashable {
         self.recipeCount = recipeCount
         self.previewImageUrls = previewImageUrls
     }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    public static func == (lhs: CuratedCollection, rhs: CuratedCollection) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
