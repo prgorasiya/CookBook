@@ -84,6 +84,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A31851F27A14A9D002D1267 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6A31851827A146B5002D1267 /* CuratedCollection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6A31852027A14AA3002D1267 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6A31851B27A14760002D1267 /* Recipe.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6A808D9327A04FF000626731 = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +179,7 @@
 		6A808DD227A0515F00626731 /* Curated Collections */ = {
 			isa = PBXGroup;
 			children = (
-				6A31851827A146B5002D1267 /* CuratedCollection.swift */,
+				6A31851F27A14A9D002D1267 /* Models */,
 			);
 			path = "Curated Collections";
 			sourceTree = "<group>";
@@ -180,7 +196,7 @@
 		6A808DD427A0518300626731 /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
-				6A31851B27A14760002D1267 /* Recipe.swift */,
+				6A31852027A14AA3002D1267 /* Models */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
