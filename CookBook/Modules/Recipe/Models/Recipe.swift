@@ -12,7 +12,7 @@ public struct Recipe: Hashable {
     public let title: String
     public let story: String
     public let imageUrl: String?
-    public let user: User?
+    public let user: User
     public let ingredients: [String]
     public let steps: [Step]
 
