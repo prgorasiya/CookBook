@@ -40,6 +40,7 @@
 		6A808DB727A04FF100626731 /* CookBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A808DB627A04FF100626731 /* CookBookTests.swift */; };
 		6A808DC127A04FF100626731 /* CookBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A808DC027A04FF100626731 /* CookBookUITests.swift */; };
 		6A808DC327A04FF100626731 /* CookBookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A808DC227A04FF100626731 /* CookBookUITestsLaunchTests.swift */; };
+		6AE665FB27A1638C009EC3B3 /* CuratedCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE665FA27A1638C009EC3B3 /* CuratedCollectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		6A808DBC27A04FF100626731 /* CookBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CookBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A808DC027A04FF100626731 /* CookBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBookUITests.swift; sourceTree = "<group>"; };
 		6A808DC227A04FF100626731 /* CookBookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBookUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6AE665FA27A1638C009EC3B3 /* CuratedCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratedCollectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				6A31853E27A15C37002D1267 /* CuratedCollectionViewController.swift */,
+				6AE665FA27A1638C009EC3B3 /* CuratedCollectionViewModel.swift */,
 			);
 			path = "Curated Collections";
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				6A31853F27A15C37002D1267 /* CuratedCollectionViewController.swift in Sources */,
 				6A31852527A14B9D002D1267 /* RemoteCuratedCollectionService.swift in Sources */,
 				6A808DA027A04FF000626731 /* AppDelegate.swift in Sources */,
+				6AE665FB27A1638C009EC3B3 /* CuratedCollectionViewModel.swift in Sources */,
 				6A31851927A146B5002D1267 /* CuratedCollection.swift in Sources */,
 				6A808DA227A04FF000626731 /* SceneDelegate.swift in Sources */,
 				6A31852827A14CD8002D1267 /* RecipeService.swift in Sources */,
