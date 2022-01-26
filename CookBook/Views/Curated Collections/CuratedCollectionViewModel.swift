@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import Combine
 
 protocol CuratedCollectionViewModelDelegate: AnyObject {
     func startLoading()
@@ -16,6 +18,10 @@ protocol CuratedCollectionViewModelDelegate: AnyObject {
 struct CuratedCollectionViewModel {
     let service: CuratedCollectionService!
     weak var delegate: CuratedCollectionViewModelDelegate?
+
+    var cancellables: Set<AnyCancellable> = []
+    var dataSource: DataSource!
+    var snapshot = Snapshot()
 
     init(service: CuratedCollectionService, delegate: CuratedCollectionViewModelDelegate) {
         self.service = service

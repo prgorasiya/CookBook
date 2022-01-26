@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import Combine
+
+typealias DataSource = UICollectionViewDiffableDataSource<String?, CuratedCollection>
+typealias Snapshot = NSDiffableDataSourceSnapshot<String?, CuratedCollection>
 
 class CuratedCollectionViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
+    var cancellables: Set<AnyCancellable> = []
     var viewModelService: CuratedCollectionService!
     var viewModel: CuratedCollectionViewModel!
 
