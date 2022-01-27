@@ -17,6 +17,17 @@ class CuratedCollectionViewController: UIViewController {
     var viewModelService: CuratedCollectionService!
     private var viewModel: CuratedCollectionViewModel!
 
+    private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 10
+        let itemSize: CGFloat = (UIScreen.main.bounds.width - 40) / 2
+        layout.itemSize = CGSize(width: itemSize, height: 200)
+        layout.minimumInteritemSpacing = spacing/2
+        layout.minimumLineSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        return layout
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +44,12 @@ class CuratedCollectionViewController: UIViewController {
 
     func setupUI() {
         mainCollectionView.register(CuratedCollectionCollectionViewCell.self)
+//        let width = (view.frame.width - 40)/2
+//        let height = 300.0
+//        let layout = mainCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.itemSize = CGSize(width: width, height: height)
+//        mainCollectionView.collectionViewLayout = layout
+        mainCollectionView.collectionViewLayout = collectionViewLayout
     }
 
     func bindViewModel() {
