@@ -8,7 +8,7 @@
 import Foundation
 
 public final class RemoteCuratedCollectionService: CuratedCollectionService {
-    private let url: URL
+    private let url = URL(string: "https://cookpad.github.io/global-mobile-hiring/api/collections")!
     private let client: APIClient
 
     public enum Error: Swift.Error {
@@ -16,8 +16,7 @@ public final class RemoteCuratedCollectionService: CuratedCollectionService {
         case invalidData
     }
 
-    public init(url: URL, client: APIClient) {
-        self.url = url
+    public init(client: APIClient) {
         self.client = client
     }
 
@@ -27,11 +26,11 @@ public final class RemoteCuratedCollectionService: CuratedCollectionService {
 
             switch result {
             case let .success((data, response)):
-                guard response.statusCode == 200, let images = try? RemoteCuratedCollectionMapper.curatedCollection(from: data) else {
+                guard response.statusCode == 200, let collection = try? RemoteCuratedCollectionMapper.curatedCollection(from: data) else {
                     completion(.failure(Error.invalidData))
                     return
                 }
-                completion(.success(images))
+                completion(.success(collection))
             case .failure:
                 completion(.failure(Error.connectivity))
             }
