@@ -7,8 +7,8 @@
 
 import Foundation
 
-private class APIManager: APIClient {
-    func get(from url: URL, completion: @escaping (APIClient.Result) -> Void) {
+public final class APIManager: APIClient {
+    public func get(from url: URL, completion: @escaping (APIClient.Result) -> Void) {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         
