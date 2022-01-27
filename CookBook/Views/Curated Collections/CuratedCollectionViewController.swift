@@ -8,8 +8,8 @@
 import UIKit
 import Combine
 
-typealias DataSource = UICollectionViewDiffableDataSource<String?, CuratedCollection>
-typealias Snapshot = NSDiffableDataSourceSnapshot<String?, CuratedCollection>
+typealias CollectionDataSource = UICollectionViewDiffableDataSource<String?, CuratedCollection>
+typealias CollectionSnapshot = NSDiffableDataSourceSnapshot<String?, CuratedCollection>
 
 class CuratedCollectionViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!

@@ -18,8 +18,8 @@ class CuratedCollectionViewModel {
     let service: CuratedCollectionService!
     weak var delegate: CuratedCollectionViewModelDelegate?
 
-    var dataSource: DataSource!
-    var snapshot = Snapshot()
+    var dataSource: CollectionDataSource!
+    var snapshot = CollectionSnapshot()
 
     init(service: CuratedCollectionService, delegate: CuratedCollectionViewModelDelegate) {
         self.service = service
