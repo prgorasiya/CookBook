@@ -15,7 +15,7 @@ class CuratedCollectionViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
     var viewModelService: CuratedCollectionService!
-    var viewModel: CuratedCollectionViewModel!
+    private var viewModel: CuratedCollectionViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class CuratedCollectionViewController: UIViewController {
         viewModel = CuratedCollectionViewModel(service: viewModelService, delegate: self)
         setupUI()
         bindViewModel()
+        viewModel.loadCollections()
     }
 
     deinit {
@@ -31,7 +32,7 @@ class CuratedCollectionViewController: UIViewController {
     }
 
     func setupUI() {
-
+        mainCollectionView.register(CuratedCollectionCollectionViewCell.self)
     }
 
     func bindViewModel() {

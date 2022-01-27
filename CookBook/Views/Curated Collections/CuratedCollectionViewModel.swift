@@ -43,6 +43,7 @@ class CuratedCollectionViewModel {
 
     func updateCollection(_ collection: [CuratedCollection]) {
         snapshot.deleteAllItems()
+        snapshot.appendSections([""])
         snapshot.appendItems(collection)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
