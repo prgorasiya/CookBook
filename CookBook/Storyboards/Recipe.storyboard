@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="139" y="119"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe Detail View Controller-->
         <scene sceneID="H15-tM-9Xh">
             <objects>
-                <viewController storyboardIdentifier="RecipeListViewController" id="kqo-Xn-klP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipeDetailViewController" id="kqo-Xn-klP" customClass="RecipeDetailViewController" customModule="CookBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yuM-eG-0X0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
