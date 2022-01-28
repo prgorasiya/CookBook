@@ -25,7 +25,7 @@ class RecipeListViewModel {
         self.delegate = delegate
     }
 
-    func loadCollections() {
+    func loadRecipes() {
         service.load { [weak self] result in
             guard let self = self else { return }
 
