@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let apiManager = APIManager()
         let storyBoard = UIStoryboard(name: "CuratedCollection", bundle: nil)
         let collectionView = storyBoard.instantiateViewController(withIdentifier: "CuratedCollectionViewController") as! CuratedCollectionViewController
-        collectionView.viewModelService = RemoteCuratedCollectionService(client: apiManager)
-        collectionView.recipeService = RemoteRecipeService(client: apiManager)
+        let endPoint = URL(string: RemoteCuratedCollectionAPI.endPoint.rawValue)!
+        collectionView.viewModelService = RemoteCuratedCollectionService(url: endPoint, client: apiManager)
+        collectionView.recipeService = RemoteRecipeService(url: endPoint, client: apiManager)
         let navigationController = UINavigationController(rootViewController: collectionView)
         return navigationController
     }

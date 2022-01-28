@@ -9,7 +9,7 @@ import Foundation
 
 public final class RemoteRecipeService: RecipeService {
     public var collectionId: Int!
-    private var url = URL(string: "https://cookpad.github.io/global-mobile-hiring/api/collections")!
+    private var url: URL
     private var path = "recipes"
     private let client: APIClient
 
@@ -18,7 +18,8 @@ public final class RemoteRecipeService: RecipeService {
         case invalidData
     }
 
-    public init(client: APIClient) {
+    public init(url: URL, client: APIClient) {
+        self.url = url
         self.client = client
     }
 

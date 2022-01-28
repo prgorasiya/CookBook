@@ -7,8 +7,12 @@
 
 import Foundation
 
+enum RemoteCuratedCollectionAPI: String {
+    case endPoint = "https://cookpad.github.io/global-mobile-hiring/api/collections"
+}
+
 public final class RemoteCuratedCollectionService: CuratedCollectionService {
-    private let url = URL(string: "https://cookpad.github.io/global-mobile-hiring/api/collections")!
+    private let url: URL
     private let client: APIClient
 
     public enum Error: Swift.Error {
@@ -16,7 +20,8 @@ public final class RemoteCuratedCollectionService: CuratedCollectionService {
         case invalidData
     }
 
-    public init(client: APIClient) {
+    public init(url: URL, client: APIClient) {
+        self.url = url
         self.client = client
     }
 
