@@ -28,13 +28,17 @@ class RecipeListViewController: UIViewController {
         viewModel.loadRecipes()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
         print("deinit RecipeListViewController screen......")
     }
 
     func setupUI() {
-        navigationController?.navigationBar.isHidden = false
         tableView.tableFooterView = UIView()
         tableView.register(RecipeTableViewCell.self)
     }
@@ -49,7 +53,10 @@ class RecipeListViewController: UIViewController {
     }
 
     func navigateToRecipeDetailsViewWith(recipe: Recipe) {
-
+        let storyboard = UIStoryboard(name: "Recipe", bundle: nil)
+        let recipeListView = storyboard.instantiateViewController(withIdentifier: "RecipeDetailViewController") as! RecipeDetailViewController
+        recipeListView.recipe = recipe
+        navigationController?.pushViewController(recipeListView, animated: true)
     }
 }
 

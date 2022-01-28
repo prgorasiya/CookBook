@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 
 typealias CollectionDataSource = UICollectionViewDiffableDataSource<String?, CuratedCollection>
 typealias CollectionSnapshot = NSDiffableDataSourceSnapshot<String?, CuratedCollection>
