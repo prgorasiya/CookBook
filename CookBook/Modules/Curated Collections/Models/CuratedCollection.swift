@@ -14,14 +14,6 @@ public struct CuratedCollection: Hashable {
     public let recipeCount: Int
     public let previewImageUrls: [String]
 
-    public init(id: Int, title: String, description: String, recipeCount: Int, previewImageUrls: [String]) {
-        self.id = id
-        self.title = title
-        self.description = description
-        self.recipeCount = recipeCount
-        self.previewImageUrls = previewImageUrls
-    }
-
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
