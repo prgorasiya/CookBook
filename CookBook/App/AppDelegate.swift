@@ -20,11 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func makeRootViewController() -> CuratedCollectionViewController {
+    func makeRootViewController() -> UIViewController {
+        let apiManager = APIManager()
         let storyBoard = UIStoryboard(name: "CuratedCollection", bundle: nil)
         let collectionView = storyBoard.instantiateViewController(withIdentifier: "CuratedCollectionViewController") as! CuratedCollectionViewController
-        collectionView.viewModelService = RemoteCuratedCollectionService(client: APIManager())
-        return collectionView
+        collectionView.viewModelService = RemoteCuratedCollectionService(client: apiManager)
+        collectionView.recipeService = RemoteRecipeService(client: apiManager)
+        let navigationController = UINavigationController(rootViewController: collectionView)
+        return navigationController
     }
 }
 
