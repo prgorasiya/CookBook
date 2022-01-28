@@ -14,6 +14,7 @@ typealias CollectionSnapshot = NSDiffableDataSourceSnapshot<String?, CuratedColl
 class CuratedCollectionViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
+    var recipeService: RecipeService!
     var viewModelService: CuratedCollectionService!
     private var viewModel: CuratedCollectionViewModel!
 
@@ -43,21 +44,33 @@ class CuratedCollectionViewController: UIViewController {
     }
 
     func setupUI() {
+        navigationController?.navigationBar.isHidden = true
         mainCollectionView.register(CuratedCollectionCollectionViewCell.self)
-//        let width = (view.frame.width - 40)/2
-//        let height = 300.0
-//        let layout = mainCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.itemSize = CGSize(width: width, height: height)
-//        mainCollectionView.collectionViewLayout = layout
         mainCollectionView.collectionViewLayout = collectionViewLayout
     }
 
     func bindViewModel() {
         viewModel.dataSource = UICollectionViewDiffableDataSource(collectionView: mainCollectionView, cellProvider: { (collectionView, indexPath, model) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratedCollectionCollectionViewCell", for: indexPath) as! CuratedCollectionCollectionViewCell
+            let cell: CuratedCollectionCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.updateCell(with: model)
             return cell
         })
+    }
+
+    func navigateToRecipeListViewWith(collection: CuratedCollection) {
+        recipeService.collectionId = collection.id
+        let storyboard = UIStoryboard(name: "Recipe", bundle: nil)
+        let recipeListView = storyboard.instantiateViewController(withIdentifier: "RecipeListViewController") as! RecipeListViewController
+        recipeListView.viewModelService = recipeService
+        recipeListView.collection = collection
+        navigationController?.pushViewController(recipeListView, animated: true)
+    }
+}
+
+extension CuratedCollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCollection = viewModel.snapshot.itemIdentifiers[indexPath.item]
+        navigateToRecipeListViewWith(collection: selectedCollection)
     }
 }
 
