@@ -20,18 +20,22 @@ class RecipeTableViewCell: UITableViewCell {
     func updateCell(with model: Recipe) {
         self.model = model
 
-        containerView.layer.cornerRadius = 10
-
         if let imageURL = model.imageUrl {
             recipeImageView.setImageWith(urlString: imageURL, placeholderImage: nil, showActivityIndicator: true)
         }
 
         titleLabel.text = model.title
 
+        userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
         if let imageURL = model.imageUrl {
             userImageView.setImageWith(urlString: imageURL, placeholderImage: nil, showActivityIndicator: true)
         }
         userNameLabel.text = model.user.name
-        layoutIfNeeded()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        containerView.dropShadow(color: .darkGray, opacity: 0.8, offSet: CGSize(width: 0, height: 0), shadowRadius: 2, cornerRadius: 10)
+        recipeImageView.roundCorners(corners: [.topRight, .bottomRight], radius: 10)
     }
 }
