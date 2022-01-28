@@ -17,7 +17,7 @@ class LoadCuratedCollectionFromRemoteUseCaseTests: XCTestCase {
 
     func test_loadTwice_requestsDataFromURLTwice() {
         let url = URL(string: "https://a-given-url.com")!
-        let (sut, client) = makeSUT()
+        let (sut, client) = makeSUT(url: url)
 
         sut.load { _ in }
         sut.load { _ in }
@@ -28,46 +28,22 @@ class LoadCuratedCollectionFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversConnectivityErrorOnClientError() {
         let (sut, client) = makeSUT()
 
-        let clientError = NSError(domain: "Test", code: 0)
-
-        let exp = expectation(description: "Wait for load completion")
-        sut.load { result in
-            switch result {
-            case .failure(let receivedError):
-                XCTAssertEqual(receivedError as! RemoteCuratedCollectionService.Error, RemoteCuratedCollectionService.Error.connectivity)
-
-            default:
-                XCTFail("Expected result \(clientError)")
-            }
-            exp.fulfill()
-        }
-
-        client.complete(with: clientError)
-
-        waitForExpectations(timeout: 0.1)
+        expect(sut, toCompleteWith: .failure(.connectivity), when: {
+            let clientError = NSError(domain: "Test", code: 0)
+            client.complete(with: clientError)
+        })
     }
 
     func test_load_deliversInvalidDataErrorOnNon200HTTPResponse() {
         let (sut, client) = makeSUT()
 
         let samples = [199, 201, 300, 400, 500]
-        let json = makeItemsJSON([])
 
         samples.enumerated().forEach { index, code in
-            let exp = expectation(description: "Wait for load completion")
-            
-            sut.load { result in
-                switch result {
-                case .failure(let receivedError):
-                    XCTAssertEqual(receivedError as! RemoteCuratedCollectionService.Error, RemoteCuratedCollectionService.Error.invalidData)
-
-                default:
-                    XCTFail("Expected result \(RemoteCuratedCollectionService.Error.invalidData)")
-                }
-                exp.fulfill()
-            }
-            client.complete(withStatusCode: code, data: json, at: index)
-            waitForExpectations(timeout: 0.1)
+            expect(sut, toCompleteWith: .failure(.invalidData), when: {
+                let json = makeItemsJSON([])
+                client.complete(withStatusCode: code, data: json, at: index)
+            })
         }
     }
 

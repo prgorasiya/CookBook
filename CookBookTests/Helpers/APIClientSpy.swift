@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import Foundation
 
 class APIClientSpy: APIClient {
     private var messages = [(url: URL, completion: (APIClient.Result) -> Void)]()
