@@ -28,6 +28,11 @@ class RecipeListViewController: UIViewController {
         viewModel.loadRecipes()
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        print("deinit RecipeListViewController screen......")
+    }
+
     func setupUI() {
         navigationController?.navigationBar.isHidden = false
         tableView.tableFooterView = UIView()
@@ -37,9 +42,21 @@ class RecipeListViewController: UIViewController {
     func bindViewModel() {
         viewModel.dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, model) -> UITableViewCell? in
             let cell: RecipeTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.selectionStyle = .none
             cell.updateCell(with: model)
             return cell
         })
+    }
+
+    func navigateToRecipeDetailsViewWith(recipe: Recipe) {
+
+    }
+}
+
+extension RecipeListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRecipe = viewModel.snapshot.itemIdentifiers[indexPath.row]
+        navigateToRecipeDetailsViewWith(recipe: selectedRecipe)
     }
 }
 

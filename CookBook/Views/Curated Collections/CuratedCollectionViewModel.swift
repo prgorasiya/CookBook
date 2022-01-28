@@ -27,9 +27,11 @@ class CuratedCollectionViewModel {
     }
 
     func loadCollections() {
+        delegate?.startLoading()
         service.load { [weak self] result in
             guard let self = self else { return }
-            
+
+            self.delegate?.finishLoading()
             switch result {
             case .success(let collection):
                 self.updateCollection(collection)
