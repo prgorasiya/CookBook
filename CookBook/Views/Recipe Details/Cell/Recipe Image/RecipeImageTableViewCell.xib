@@ -19,6 +19,10 @@
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mCb-8I-B8a">
                             <rect key="frame" x="0.0" y="0.0" width="388" height="236"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="750" constant="236" id="S5e-61-CHj"/>
+                            </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,7 +44,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="containerView" destination="TVh-ch-HU0" id="hsW-nj-0yh"/>
+                <outlet property="imageViewHeightConstraint" destination="S5e-61-CHj" id="rBS-RS-BSq"/>
                 <outlet property="recipeImageView" destination="mCb-8I-B8a" id="4V0-0K-wUt"/>
             </connections>
             <point key="canvasLocation" x="118.84057971014494" y="326.11607142857139"/>

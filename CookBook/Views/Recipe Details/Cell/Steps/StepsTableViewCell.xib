@@ -10,21 +10,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="lu8-Hq-wXz" customClass="IngredientsTableViewCell" customModule="CookBook" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="LWU-9r-pef" customClass="StepsTableViewCell" customModule="CookBook" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="438" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ey-ze-kDJ">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8x3-k2-dcZ">
                     <rect key="frame" x="0.0" y="0.0" width="438" height="80"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lx1-BW-dFu">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xH-ed-aHH">
                             <rect key="frame" x="15" y="15" width="408" height="18"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                             <color key="textColor" red="0.18039215689999999" green="0.21960784310000001" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SoZ-dv-6Nb">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KA1-GP-hHE">
                             <rect key="frame" x="15" y="48" width="408" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.18039215689999999" green="0.21960784310000001" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -33,27 +33,27 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Lx1-BW-dFu" secondAttribute="trailing" constant="15" id="0mn-Uq-aim"/>
-                        <constraint firstItem="SoZ-dv-6Nb" firstAttribute="leading" secondItem="4ey-ze-kDJ" secondAttribute="leading" constant="15" id="332-xk-odf"/>
-                        <constraint firstItem="Lx1-BW-dFu" firstAttribute="leading" secondItem="4ey-ze-kDJ" secondAttribute="leading" constant="15" id="8or-3U-Cf0"/>
-                        <constraint firstAttribute="trailing" secondItem="SoZ-dv-6Nb" secondAttribute="trailing" constant="15" id="fHF-v2-r3B"/>
-                        <constraint firstAttribute="bottom" secondItem="SoZ-dv-6Nb" secondAttribute="bottom" priority="750" constant="15" id="i23-XM-JTp"/>
-                        <constraint firstItem="SoZ-dv-6Nb" firstAttribute="top" secondItem="Lx1-BW-dFu" secondAttribute="bottom" constant="15" id="mOs-yl-ee7"/>
-                        <constraint firstItem="Lx1-BW-dFu" firstAttribute="top" secondItem="4ey-ze-kDJ" secondAttribute="top" constant="15" id="ryf-DN-VbB"/>
+                        <constraint firstAttribute="trailing" secondItem="KA1-GP-hHE" secondAttribute="trailing" constant="15" id="47e-FQ-XmC"/>
+                        <constraint firstItem="8xH-ed-aHH" firstAttribute="top" secondItem="8x3-k2-dcZ" secondAttribute="top" constant="15" id="52Q-SO-zre"/>
+                        <constraint firstItem="KA1-GP-hHE" firstAttribute="top" secondItem="8xH-ed-aHH" secondAttribute="bottom" constant="15" id="PC6-fb-tTC"/>
+                        <constraint firstItem="KA1-GP-hHE" firstAttribute="leading" secondItem="8x3-k2-dcZ" secondAttribute="leading" constant="15" id="YGu-ll-2d7"/>
+                        <constraint firstItem="8xH-ed-aHH" firstAttribute="leading" secondItem="8x3-k2-dcZ" secondAttribute="leading" constant="15" id="l2A-DJ-Rcp"/>
+                        <constraint firstAttribute="trailing" secondItem="8xH-ed-aHH" secondAttribute="trailing" constant="15" id="ngA-y3-IKN"/>
+                        <constraint firstAttribute="bottom" secondItem="KA1-GP-hHE" secondAttribute="bottom" priority="750" constant="15" id="t1F-Kt-vGN"/>
                     </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="ZAi-UP-woa"/>
+            <viewLayoutGuide key="safeArea" id="cax-Dl-y3w"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="4ey-ze-kDJ" secondAttribute="bottom" id="OCP-RZ-Lip"/>
-                <constraint firstItem="4ey-ze-kDJ" firstAttribute="leading" secondItem="lu8-Hq-wXz" secondAttribute="leading" id="Z2T-68-OER"/>
-                <constraint firstItem="4ey-ze-kDJ" firstAttribute="top" secondItem="lu8-Hq-wXz" secondAttribute="top" id="dIG-h9-G0F"/>
-                <constraint firstAttribute="trailing" secondItem="4ey-ze-kDJ" secondAttribute="trailing" id="o29-z5-AVU"/>
+                <constraint firstItem="8x3-k2-dcZ" firstAttribute="top" secondItem="LWU-9r-pef" secondAttribute="top" id="ITt-ZO-Ecw"/>
+                <constraint firstItem="8x3-k2-dcZ" firstAttribute="leading" secondItem="LWU-9r-pef" secondAttribute="leading" id="OqT-92-GCG"/>
+                <constraint firstAttribute="trailing" secondItem="8x3-k2-dcZ" secondAttribute="trailing" id="naZ-Kv-ANP"/>
+                <constraint firstAttribute="bottom" secondItem="8x3-k2-dcZ" secondAttribute="bottom" id="xJK-OK-0x5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="ingredientsLabel" destination="SoZ-dv-6Nb" id="MfG-sF-Mp2"/>
+                <outlet property="stepsLabel" destination="KA1-GP-hHE" id="Xvn-pV-j2M"/>
             </connections>
             <point key="canvasLocation" x="155.07246376811597" y="272.54464285714283"/>
         </view>
