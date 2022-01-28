@@ -9,6 +9,6 @@ import Foundation
 
 public protocol RecipeService {
     typealias Result = Swift.Result<[Recipe], Error>
-
+    var collectionId: Int! { get set }
     func load(completion: @escaping (Result) -> Void)
 }

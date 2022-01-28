@@ -8,7 +8,9 @@
 import Foundation
 
 public final class RemoteRecipeService: RecipeService {
-    private let url: URL
+    public var collectionId: Int!
+    private var url = URL(string: "https://cookpad.github.io/global-mobile-hiring/api/collections")!
+    private var path = "recipes"
     private let client: APIClient
 
     public enum Error: Swift.Error {
@@ -16,13 +18,13 @@ public final class RemoteRecipeService: RecipeService {
         case invalidData
     }
 
-    public init(url: URL, client: APIClient) {
-        self.url = url
+    public init(client: APIClient) {
         self.client = client
     }
 
     public func load(completion: @escaping (RecipeService.Result) -> Void) {
-        client.get(from: url) { [weak self] result in
+        let finalUrl = appendCollectionIdToAPIEndpoint()
+        client.get(from: finalUrl) { [weak self] result in
             guard self != nil else { return }
 
             switch result {
@@ -36,5 +38,12 @@ public final class RemoteRecipeService: RecipeService {
                 completion(.failure(Error.connectivity))
             }
         }
+    }
+
+    private func appendCollectionIdToAPIEndpoint() -> URL {
+        var finalUrl = url
+        finalUrl = finalUrl.appendingPathComponent("\(collectionId!)")
+        finalUrl = finalUrl.appendingPathComponent(path)
+        return finalUrl
     }
 }
