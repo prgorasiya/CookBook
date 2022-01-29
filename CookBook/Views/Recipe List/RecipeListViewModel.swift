@@ -16,20 +16,20 @@ protocol RecipeListViewModelDelegate: AnyObject {
 class RecipeListViewModel {
     let service: RecipeService!
     weak var delegate: RecipeListViewModelDelegate?
-
+    
     var dataSource: RecipeDataSource!
     var snapshot = RecipeSnapshot()
-
+    
     init(service: RecipeService, delegate: RecipeListViewModelDelegate) {
         self.service = service
         self.delegate = delegate
     }
-
+    
     func loadRecipes() {
         delegate?.startLoading()
         service.load { [weak self] result in
             guard let self = self else { return }
-
+            
             self.delegate?.finishLoading()
             switch result {
             case .success(let recipes):
@@ -41,7 +41,7 @@ class RecipeListViewModel {
             }
         }
     }
-
+    
     func updateRecipes(_ recipes: [Recipe]) {
         snapshot.deleteAllItems()
         snapshot.appendSections([""])

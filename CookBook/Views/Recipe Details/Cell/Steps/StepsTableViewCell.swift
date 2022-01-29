@@ -10,7 +10,7 @@ import UIKit
 
 class StepsTableViewCell: UITableViewCell {
     @IBOutlet weak var stepsLabel: UILabel!
-
+    
     func updateCell(with model: StepsCellModel) {
         stepsLabel.attributedText = model.steps.bulletList(with: stepsLabel.font, textColor: stepsLabel.textColor)
         layoutIfNeeded()

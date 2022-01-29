@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-
+    
     func makeRootViewController() -> UIViewController {
         let apiManager = APIManager()
         let storyBoard = UIStoryboard(name: "CuratedCollection", bundle: nil)

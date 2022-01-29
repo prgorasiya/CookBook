@@ -14,13 +14,13 @@ typealias RecipeDetailSnapshot = NSDiffableDataSourceSnapshot<String?, AnyHashab
 class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
-
+    
     var recipe: Recipe!
     private var viewModel: RecipeDetailViewModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         viewModel = RecipeDetailViewModel()
         setupUI()
         bindViewModel()
@@ -31,7 +31,7 @@ class RecipeDetailViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
         print("deinit RecipeDetailViewController screen......")
     }
-
+    
     func setupUI() {
         navigationController?.navigationBar.isHidden = true
         
@@ -40,7 +40,7 @@ class RecipeDetailViewController: UIViewController {
         backButton.layer.shadowRadius = 2
         backButton.layer.shadowOpacity = 0.8
         backButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-
+        
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         tableView.tableFooterView = UIView()
         tableView.register(RecipeImageTableViewCell.self)
@@ -48,7 +48,7 @@ class RecipeDetailViewController: UIViewController {
         tableView.register(IngredientsTableViewCell.self)
         tableView.register(StepsTableViewCell.self)
     }
-
+    
     func bindViewModel() {
         viewModel.dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, model) -> UITableViewCell? in
             switch model {
@@ -77,7 +77,7 @@ class RecipeDetailViewController: UIViewController {
             }
         })
     }
-
+    
     @IBAction func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }

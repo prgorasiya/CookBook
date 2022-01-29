@@ -13,11 +13,11 @@ public struct CuratedCollection: Hashable {
     public let description: String
     public let recipeCount: Int
     public let previewImageUrls: [String]
-
+    
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-
+    
     public static func == (lhs: CuratedCollection, rhs: CuratedCollection) -> Bool {
         return lhs.id == rhs.id
     }

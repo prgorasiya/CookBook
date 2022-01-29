@@ -12,12 +12,12 @@ typealias CollectionSnapshot = NSDiffableDataSourceSnapshot<String?, CuratedColl
 
 class CuratedCollectionViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
-
+    
     var activityIndicator = UIActivityIndicatorView(style: .large)
     var recipeService: RecipeService!
     var viewModelService: CuratedCollectionService!
     private var viewModel: CuratedCollectionViewModel!
-
+    
     private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
@@ -28,32 +28,32 @@ class CuratedCollectionViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         return layout
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         viewModel = CuratedCollectionViewModel(service: viewModelService, delegate: self)
         setupUI()
         bindViewModel()
         viewModel.loadCollections()
     }
-
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
         print("deinit CuratedCollectionViewController screen......")
     }
-
+    
     func setupUI() {
         navigationController?.navigationBar.isHidden = true
         mainCollectionView.register(CuratedCollectionCollectionViewCell.self)
         mainCollectionView.collectionViewLayout = collectionViewLayout
-
+        
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
-
+    
     func bindViewModel() {
         viewModel.dataSource = UICollectionViewDiffableDataSource(collectionView: mainCollectionView, cellProvider: { (collectionView, indexPath, model) -> UICollectionViewCell? in
             let cell: CuratedCollectionCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
@@ -61,7 +61,7 @@ class CuratedCollectionViewController: UIViewController {
             return cell
         })
     }
-
+    
     func navigateToRecipeListViewWith(collection: CuratedCollection) {
         recipeService.collectionId = collection.id
         let storyboard = UIStoryboard(name: "Recipe", bundle: nil)
@@ -83,11 +83,11 @@ extension CuratedCollectionViewController: CuratedCollectionViewModelDelegate {
     func startLoading() {
         activityIndicator.startAnimating()
     }
-
+    
     func finishLoading() {
         activityIndicator.stopAnimating()
     }
-
+    
     func finishLoadingWithError(_ error: Error) {
         activityIndicator.stopAnimating()
         print(error.localizedDescription)

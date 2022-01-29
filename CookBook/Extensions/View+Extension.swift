@@ -25,7 +25,7 @@ extension UIView {
         shadowLayer.setNeedsDisplay()
         shadowLayer.setNeedsLayout()
     }
-
+    
     func removePreviouslyAddedLayer(name : String) {
         if self.layer.sublayers?.count ?? 0 > 0 {
             self.layer.sublayers?.forEach {
@@ -35,7 +35,7 @@ extension UIView {
             }
         }
     }
-
+    
     func roundCorners(corners:UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()

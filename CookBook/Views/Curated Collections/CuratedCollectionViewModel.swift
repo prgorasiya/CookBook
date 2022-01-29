@@ -17,20 +17,20 @@ protocol CuratedCollectionViewModelDelegate: AnyObject {
 class CuratedCollectionViewModel {
     let service: CuratedCollectionService!
     weak var delegate: CuratedCollectionViewModelDelegate?
-
+    
     var dataSource: CollectionDataSource!
     var snapshot = CollectionSnapshot()
-
+    
     init(service: CuratedCollectionService, delegate: CuratedCollectionViewModelDelegate) {
         self.service = service
         self.delegate = delegate
     }
-
+    
     func loadCollections() {
         delegate?.startLoading()
         service.load { [weak self] result in
             guard let self = self else { return }
-
+            
             self.delegate?.finishLoading()
             switch result {
             case .success(let collection):
@@ -42,7 +42,7 @@ class CuratedCollectionViewModel {
             }
         }
     }
-
+    
     func updateCollection(_ collection: [CuratedCollection]) {
         snapshot.deleteAllItems()
         snapshot.appendSections([""])

@@ -13,7 +13,7 @@ class CuratedCollectionCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var recipeCountLabel: UILabel!
-
+    
     func updateCell(with model: CuratedCollection) {
         //previewImageUrls is not supposed to be empty as per API docs, but one object has empty previewImageUrls, therefore this check
         if let imageURL = model.previewImageUrls.first {

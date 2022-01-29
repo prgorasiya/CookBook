@@ -17,10 +17,10 @@ enum RemoteCuratedCollectionMapper {
 
         var item: CuratedCollection {
             return CuratedCollection(id: id,
-                                           title: title,
-                                           description: description,
-                                           recipeCount: recipeCount,
-                                           previewImageUrls: previewImageUrls)
+                                     title: title,
+                                     description: description,
+                                     recipeCount: recipeCount,
+                                     previewImageUrls: previewImageUrls)
         }
     }
 

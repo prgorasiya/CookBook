@@ -13,42 +13,42 @@ typealias RecipeSnapshot = NSDiffableDataSourceSnapshot<String?, Recipe>
 
 class RecipeListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-
+    
     var activityIndicator = UIActivityIndicatorView(style: .large)
     var collection: CuratedCollection!
     var viewModelService: RecipeService!
     private var viewModel: RecipeListViewModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = collection.title
-
+        
         viewModel = RecipeListViewModel(service: viewModelService, delegate: self)
         setupUI()
         bindViewModel()
         viewModel.loadRecipes()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
     }
-
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
         print("deinit RecipeListViewController screen......")
     }
-
+    
     func setupUI() {
         tableView.tableFooterView = UIView()
         tableView.register(RecipeTableViewCell.self)
-
+        
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
-
+    
     func bindViewModel() {
         viewModel.dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, model) -> UITableViewCell? in
             let cell: RecipeTableViewCell = tableView.dequeueReusableCell(for: indexPath)
@@ -57,7 +57,7 @@ class RecipeListViewController: UIViewController {
             return cell
         })
     }
-
+    
     func navigateToRecipeDetailsViewWith(recipe: Recipe) {
         let storyboard = UIStoryboard(name: "Recipe", bundle: nil)
         let recipeListView = storyboard.instantiateViewController(withIdentifier: "RecipeDetailViewController") as! RecipeDetailViewController
@@ -77,11 +77,11 @@ extension RecipeListViewController: RecipeListViewModelDelegate {
     func startLoading() {
         activityIndicator.startAnimating()
     }
-
+    
     func finishLoading() {
         activityIndicator.stopAnimating()
     }
-
+    
     func finishLoadingWithError(_ error: Error) {
         activityIndicator.stopAnimating()
         print(error.localizedDescription)
