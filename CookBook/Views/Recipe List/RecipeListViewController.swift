@@ -14,6 +14,7 @@ typealias RecipeSnapshot = NSDiffableDataSourceSnapshot<String?, Recipe>
 class RecipeListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
+    var activityIndicator = UIActivityIndicatorView(style: .large)
     var collection: CuratedCollection!
     var viewModelService: RecipeService!
     private var viewModel: RecipeListViewModel!
@@ -41,6 +42,11 @@ class RecipeListViewController: UIViewController {
     func setupUI() {
         tableView.tableFooterView = UIView()
         tableView.register(RecipeTableViewCell.self)
+
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
     func bindViewModel() {
@@ -69,14 +75,15 @@ extension RecipeListViewController: UITableViewDelegate {
 
 extension RecipeListViewController: RecipeListViewModelDelegate {
     func startLoading() {
-
+        activityIndicator.startAnimating()
     }
 
     func finishLoading() {
-
+        activityIndicator.stopAnimating()
     }
 
     func finishLoadingWithError(_ error: Error) {
-
+        activityIndicator.stopAnimating()
+        print(error.localizedDescription)
     }
 }

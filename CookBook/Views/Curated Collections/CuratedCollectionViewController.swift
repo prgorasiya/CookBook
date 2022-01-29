@@ -13,6 +13,7 @@ typealias CollectionSnapshot = NSDiffableDataSourceSnapshot<String?, CuratedColl
 class CuratedCollectionViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
+    var activityIndicator = UIActivityIndicatorView(style: .large)
     var recipeService: RecipeService!
     var viewModelService: CuratedCollectionService!
     private var viewModel: CuratedCollectionViewModel!
@@ -46,6 +47,11 @@ class CuratedCollectionViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         mainCollectionView.register(CuratedCollectionCollectionViewCell.self)
         mainCollectionView.collectionViewLayout = collectionViewLayout
+
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
     func bindViewModel() {
@@ -75,14 +81,15 @@ extension CuratedCollectionViewController: UICollectionViewDelegate {
 
 extension CuratedCollectionViewController: CuratedCollectionViewModelDelegate {
     func startLoading() {
-        
+        activityIndicator.startAnimating()
     }
 
     func finishLoading() {
-
+        activityIndicator.stopAnimating()
     }
 
     func finishLoadingWithError(_ error: Error) {
-
+        activityIndicator.stopAnimating()
+        print(error.localizedDescription)
     }
 }
