@@ -27,17 +27,19 @@ public final class RemoteCuratedCollectionService: CuratedCollectionService {
 
     public func load(completion: @escaping (CuratedCollectionService.Result) -> Void) {
         client.get(from: url) { [weak self] result in
-            guard self != nil else { return }
+            DispatchQueue.main.async {
+                guard self != nil else { return }
 
-            switch result {
-            case let .success((data, response)):
-                guard response.statusCode == 200, let collection = try? RemoteCuratedCollectionMapper.curatedCollection(from: data) else {
-                    completion(.failure(Error.invalidData))
-                    return
+                switch result {
+                case let .success((data, response)):
+                    guard response.statusCode == 200, let collection = try? RemoteCuratedCollectionMapper.curatedCollection(from: data) else {
+                        completion(.failure(Error.invalidData))
+                        return
+                    }
+                    completion(.success(collection))
+                case .failure:
+                    completion(.failure(Error.connectivity))
                 }
-                completion(.success(collection))
-            case .failure:
-                completion(.failure(Error.connectivity))
             }
         }
     }

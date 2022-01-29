@@ -26,17 +26,19 @@ public final class RemoteRecipeService: RecipeService {
     public func load(completion: @escaping (RecipeService.Result) -> Void) {
         let finalUrl = appendCollectionIdToAPIEndpoint()
         client.get(from: finalUrl) { [weak self] result in
-            guard self != nil else { return }
+            DispatchQueue.main.async {
+                guard self != nil else { return }
 
-            switch result {
-            case let .success((data, response)):
-                guard response.statusCode == 200, let images = try? RemoteRecipeMapper.recipes(from: data) else {
-                    completion(.failure(Error.invalidData))
-                    return
+                switch result {
+                case let .success((data, response)):
+                    guard response.statusCode == 200, let images = try? RemoteRecipeMapper.recipes(from: data) else {
+                        completion(.failure(Error.invalidData))
+                        return
+                    }
+                    completion(.success(images))
+                case .failure:
+                    completion(.failure(Error.connectivity))
                 }
-                completion(.success(images))
-            case .failure:
-                completion(.failure(Error.connectivity))
             }
         }
     }
