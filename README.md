@@ -1,4 +1,4 @@
-# The Cookpad Challenge (CookBook)
+# Cookpad Challenge (CookBook)
 This project demonstartes use of some of the APIs from <a href="https://cookpad.github.io/global-mobile-hiring/" target="_blank">Cookpad's challenge</a>.
 
 ### Application Overview
@@ -8,7 +8,7 @@ This project demonstartes use of some of the APIs from <a href="https://cookpad.
     - Recipe details
 
 2) Min deployment version iOS 13.0 and supports iPhones in portrait orientation
-3) Project is based on UIKit, written entierly in Swift 5 and uses storyboards and XIBs
+3) Project is based on UIKit, written entierly in Swift 5 and uses storyboards and XIBs, using Xcode 13.2.1
 4) No use of external dependencies
 5) First screen loads list of collections and displays them in a collection view
 6) 2nd screen loads list of recipes of a selected collection, and shows them in a table view
@@ -37,4 +37,6 @@ This project demonstartes use of some of the APIs from <a href="https://cookpad.
 Project can be easily extended to include more screens as there are a few more APIs in the API documentation. I would like to add a collection view to show images which are attached with some of the Steps of a recipe details (I didnt add that due to time crunch).
 I would add more modules as needed using TDD approach.
 
-Additionally, I would add a tab bar which would have existing Collections screen and a new screen to show all the recipes using api/recipes. I couldn't find pagination information for any of the API, so If I were to add all recipes screen I would need that information.
+Additionally, I would add a tab bar with 2 tabs, which would have existing Collections screen and a new screen to show all the recipes using api/recipes. I couldn't find pagination information for any of the API, so If I were to add all recipes screen I would need that information.
+
+Search functionality for all recipes screen could also be implemented with the use of CoreData and Combine frameworks.
