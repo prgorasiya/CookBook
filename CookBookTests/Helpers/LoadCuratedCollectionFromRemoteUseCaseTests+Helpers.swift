@@ -8,7 +8,10 @@
 import XCTest
 
 extension LoadCuratedCollectionFromRemoteUseCaseTests {
-    func expect(_ sut: RemoteCuratedCollectionService, toCompleteWith expectedResult: Result<[CuratedCollection], RemoteCuratedCollectionService.Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    func expect(_ sut: RemoteCuratedCollectionService,
+                toCompleteWith expectedResult: Result<[CuratedCollection], RemoteCuratedCollectionService.Error>,
+                when action: () -> Void,
+                file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         
         sut.load { receivedResult in

@@ -8,7 +8,7 @@
 import XCTest
 
 class LoadRecipesFromRemoteUseCaseTests: XCTestCase {
-    private var path = "recipes"
+    private let path = "recipes"
 
     func test_init_doesNotRequestDataFromURL() {
         let collectionId = anyRandomCollectionId()

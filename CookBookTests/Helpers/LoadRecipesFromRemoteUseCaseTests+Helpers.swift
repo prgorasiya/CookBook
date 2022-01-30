@@ -8,7 +8,10 @@
 import XCTest
 
 extension LoadRecipesFromRemoteUseCaseTests {
-    func expect(_ sut: RemoteRecipeService, toCompleteWith expectedResult: Result<[Recipe], RemoteRecipeService.Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    func expect(_ sut: RemoteRecipeService,
+                toCompleteWith expectedResult: Result<[Recipe], RemoteRecipeService.Error>,
+                when action: () -> Void,
+                file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         
         sut.load { receivedResult in
