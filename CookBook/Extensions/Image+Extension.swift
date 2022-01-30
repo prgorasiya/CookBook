@@ -26,7 +26,7 @@ extension UIImageView {
             self.image = placeholderImage
         }
         
-        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView.init(style: .medium)
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
         if showActivityIndicator {
             addSubview(activityIndicator)
             activityIndicator.startAnimating()
